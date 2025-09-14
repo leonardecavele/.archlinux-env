@@ -1,7 +1,4 @@
 -- Leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 local keymap = vim.keymap.set
 local builtin = require('telescope.builtin')
 

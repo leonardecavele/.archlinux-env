@@ -3,6 +3,7 @@ local keymap = vim.keymap.set
 local tlscpbuiltin = require('telescope.builtin')
 
 -- Vanilla
+keymap("n", "<caps>", "<esc>", {desc = "Rebind caps-lock to escape"} )
 keymap("n" , "<esc>", "<CMD>nohl<CR>", {desc = "Erase highlight from research"})
 
 -- Oil

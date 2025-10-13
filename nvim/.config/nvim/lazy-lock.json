@@ -1,7 +1,10 @@
 {
   "42-header.nvim": { "branch": "main", "commit": "4303be09d9615e9169661b3e5d5a98c3eecee0ff" },
+  "fzf-lua": { "branch": "main", "commit": "fcbf0cdcc278bae8e754084809c6d68c1f5a496d" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
+  "live-preview.nvim": { "branch": "main", "commit": "bd099b730a9462cbcb1d0ea0b3b2205c084f573d" },
   "mini.icons": { "branch": "main", "commit": "f9a177c11daa7829389b7b6eaaec8b8a5c47052d" },
+  "mini.pick": { "branch": "main", "commit": "96ee37d07043aeed90ae6ae32733b2d0db8f1c13" },
   "nvim-autopairs": { "branch": "master", "commit": "23320e75953ac82e559c610bec5a90d9c6dfa743" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
   "oil.nvim": { "branch": "master", "commit": "07f80ad645895af849a597d1cac897059d89b686" },

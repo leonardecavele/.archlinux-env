@@ -1,5 +1,6 @@
 #=========== APP
 alias n="nvim"
+alias blue="~/blue42"
 
 #=========== CODE
 alias comp="cc -Wall -Werror -Wextra"
@@ -22,4 +23,3 @@ alias gl="git pull"
 alias cmt="$HOME/.config/scripts/commit_maker.sh"
 
 #=========== TO SORT
-alias blue="~/blue42"

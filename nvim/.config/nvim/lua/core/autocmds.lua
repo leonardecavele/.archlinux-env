@@ -14,3 +14,8 @@ autocmd('Filetype', {
   pattern = { 'tpp' },
   command = 'set filetype=cpp'
 })
+
+autocmd('BufNewFile', {
+  pattern = { '*.c', '*.h', '*.py' },
+  command = 'Stdheader',
+})

@@ -1,0 +1,9 @@
+hide_ascii = false
+
+[box]
+border="thick"
+visible=true
+
+[custom_ascii]
+color = "green"
+path = "ascii-art.txt"

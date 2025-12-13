@@ -27,7 +27,7 @@ disks = ["/home/ldecavel"]
 #memory_percentage = false
 
 # Themes need to be placed in "$XDG_CONFIG_DIR/macchina/themes" beforehand.
-theme = "default"
+theme = "theme"
 show = ["Host", "Machine", "Kernel", "Distribution",  "Processor","ProcessorLoad", "Memory", "DiskSpace", "Terminal", "Shell"]
 
 

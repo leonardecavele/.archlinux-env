@@ -27,7 +27,7 @@ alias c='cc -Wall -Wextra -Werror'
 alias n='norminette -R CheckForbiddenSourceHeader'
 alias ll='ls -la'
 alias vim='nvim'
-alias glow='/sgoinfre/elagouch/Packages/glow/2.1.0/glow'
+alias glow='/sgoinfre/nlallema/glow'
 
 # bashrc
 shopt -s checkwinsize

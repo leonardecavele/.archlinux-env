@@ -1,15 +1,42 @@
 call plug#begin()
 
+" navigation
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
-Plug 'sainnhe/everforest'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
-Plug 'kdheepak/lazygit.nvim'
-Plug 'tpope/vim-surround'
+Plug 'nxhung2304/lastplace.nvim'
+
+" code
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'mfussenegger/nvim-lint'
+Plug 'rmagatti/logger.nvim'
+Plug 'rmagatti/goto-preview'
+
+" code -> lsp
+Plug 'mason-org/mason.nvim'
+Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
+Plug 'mason-org/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
+
+" code -> completion
+Plug 'nvim-mini/mini.nvim'
+
+" code -> format
+Plug 'stevearc/conform.nvim'
+
+" tools
+Plug 'kdheepak/lazygit.nvim'
+Plug 'tpope/vim-surround'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+
+" appearance
 Plug 'folke/tokyonight.nvim'
+Plug 'xiyaowong/transparent.nvim'
+Plug 'tamton-aquib/staline.nvim'
+Plug 'sphamba/smear-cursor.nvim'
+Plug 'rachartier/tiny-glimmer.nvim'
 
 call plug#end()
 
@@ -21,12 +48,11 @@ set shiftwidth=4
 set smartindent
 set autoindent
 
-colorscheme tokyonight-moon
-"colorscheme everforest
+set undofile
+set undodir=~/.local/share/nvim/undo/
+set undolevels=100
 
-highlight ColorColumn ctermbg=52 guibg=#ff6054
-
-function! Header()
+function! CHeader()
 	let header = expand("%:t:r")
 	call append(0,"#ifndef ".toupper(header)."_H")
 	call append(1,"# define ".toupper(header)."_H")
@@ -37,7 +63,7 @@ function! Header()
 	call cursor(4, 0)
 endfunction
 
-function! Main()
+function! CMain()
 	call append(0,"#include <>")
 	call append(1,"")
 	call append(2,"int	main(int argc, char *argv[])")
@@ -48,13 +74,25 @@ function! Main()
 	call cursor(5, 0)
 endfunction
 
-command! -nargs=0 Header call Header()
+function! Main()
+    call append(1, "")
+    call append(2, "def main() -> None:")
+    call append(3, "    pass")
+    call append(4, "")
+    call append(5, "")
+    call append(6, "if __name__ == '__main__':")
+    call append(7, "	main()")
+	call cursor(4, 9)
+endfunction
+
+command! -nargs=0 CHeader call CHeader()
+command! -nargs=0 CMain call CMain()
 command! -nargs=0 Main call Main()
 
 source ~/.vim/plugin/stdheader.vim
 source ~/.config/nvim/config.lua
 
-let g:user42 = 'ldecavel'
-let g:mail42 = 'ldecavel@student.42lyon.fr'
+let g:user42 = 'nlallema'
+let g:mail42 = 'nlallema@student.42lyon.fr'
 
-let g:doge_doc_standard_python = 'numpy'
+let g:doge_doc_standard_python = 'google'

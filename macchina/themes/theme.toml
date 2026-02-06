@@ -1,9 +1,9 @@
 hide_ascii = false
 
 [box]
-border="thick"
-visible=true
+border="none"
+visible=false
 
 [custom_ascii]
-color = "green"
+color = "red"
 path = "~/.config/macchina/themes/ascii-art.txt"

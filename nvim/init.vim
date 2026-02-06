@@ -10,6 +10,8 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'mfussenegger/nvim-lint'
 Plug 'rmagatti/logger.nvim'
 Plug 'rmagatti/goto-preview'
+"Plug 'camAtGitHub/pydochide.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'branch' : 'master', 'do' : ':TSUpdate'}
 
 " code -> lsp
 Plug 'mason-org/mason.nvim'
@@ -45,7 +47,7 @@ set undofile
 set undodir=~/.local/share/nvim/undo/
 set undolevels=99
 
-source ~/.vim/plugin/stdheader.vim
+source ~/.config/nvim/vim/stdheader.vim
 source ~/.config/nvim/config.lua
 
 let g:user42 = 'ldecavel'

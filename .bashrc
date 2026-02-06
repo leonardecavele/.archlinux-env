@@ -12,24 +12,16 @@ git_branch() {
   fi
 }
 
-# prompt
-PROMPT_COMMAND='rc=$?; printf "[%d] " "$rc"'
-
-# francinette
-alias paco=/home/ldecavel/francinette/tester.sh
-alias francinette=/home/ldecavel/francinette/tester.sh
-alias py='python3'
-alias p='python3'
-
-# perso
+# alias
 alias ra='rm a.out'
 alias c='cc -Wall -Wextra -Werror'
 alias n='norminette -R CheckForbiddenSourceHeader'
 alias ll='ls -la'
 alias vim='nvim'
-alias glow='/sgoinfre/nlallema/glow'
+alias py='python3'
+alias p='python3'
 
-# bashrc
+# prompt
 shopt -s checkwinsize
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
@@ -43,6 +35,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+PROMPT_COMMAND='rc=$?; printf "[%d] " "$rc"'
 PS1="${GREEN}\u@\h ${BLUE}\W${MAGENTA} \$(git_branch)\n${RESET}\$ "
 
 unset color_prompt force_color_prompt
@@ -73,9 +66,17 @@ fi
 
 alias func='grep -rE "[a-z_]+\([a-z_0-9,\* ]*\)"'
 
-export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
-macchina --config ~/.config/macchina/macchina.toml
 
+# NVM https://github.com/nvm-sh/nvm.git
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# PATH
+# JUNEST https://github.com/fsquillace/junest
+export PATH="$PATH:~/.junest/usr/bin_wrappers"
+export PATH=~/.local/share/junest/bin:$PATH
+# CARGO 
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+
+macchina --config ~/.config/macchina/macchina.toml

@@ -1,45 +1,29 @@
 #!/usr/bin/env bash
+
+# strict with errors
 set -euo pipefail
 
-ROOT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-HOST_HOME="${HOST_HOME:-$HOME}"
+# colours
+export RED='\033[0;31m'
+export GREEN='\033[0;32m'
+export RESET='\033[0m'
+export YELLOW='\033[0;33m'
 
-have_sudo_pacman() {
-  /usr/bin/sudo -n true >/dev/null 2>&1 && command -v pacman >/dev/null 2>&1
-}
+# variables
+export SCRIPT_DIRECTORY="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+export JUNEST_REPOSITORY="${JUNEST_REPOSITORY:-$HOME/.local/share/junest}"
+export JUNEST="${JUNEST:-$JUNEST_REPOSITORY/bin/junest}"
 
-ensure_bashrc_autojunest() {
-  local rc="$HOST_HOME/.bashrc"
-  local marker="# auto-enter junest when host lacks sudo/pacman"
-
-  if ! grep -qF "$marker" "$rc" 2>/dev/null; then
-    echo "[setup] adding junest auto-enter hook to $rc"
-    cat >> "$rc" <<'EOF'
-
-# auto-enter junest when host lacks sudo/pacman
-if [ -z "${IN_JUNEST:-}" ]; then
-  if ! (/usr/bin/sudo -n true >/dev/null 2>&1 && command -v pacman >/dev/null 2>&1); then
-    if command -v junest >/dev/null 2>&1; then
-      export IN_JUNEST=1
-      exec junest -n "bash -l"
-    fi
-  fi
-fi
-EOF
-  fi
-}
-
-if have_sudo_pacman; then
-  echo "sudo + pacman available -> installing on host"
-  bash "$ROOT_DIR/scripts/install_env.sh"
+# if user have sudo and pacman
+if /usr/bin/sudo -n true >/dev/null 2>&1 && command -v pacman >/dev/null 2>&1; then
+  echo "[INFO] ${GREEN}sudo + pacman available: installing on home${RESET}"
+  bash "$SCRIPT_DIRECTORY/scripts/config.sh"
 else
-  echo "sudo and/or pacman not available -> installing junest, then env"
-  bash "$ROOT_DIR/scripts/junest.sh"
-  bash "$ROOT_DIR/scripts/config.sh"
-  ensure_bashrc_autojunest
-  echo "[info] open a new terminal (or: source ~/.bashrc) to auto-enter junest"
+  echo "[INFO] ${RED}sudo and/or pacman not available: installing on junest${RESET}"
+  bash "$SCRIPT_DIRECTORY/scripts/junest.sh"
+  bash "$SCRIPT_DIRECTORY/scripts/config.sh"
 fi
 
 echo ""
-echo "[info] reloading shell"
+echo "[INFO] ${GREEN}reloading shell${RESET}"
 exec bash -l

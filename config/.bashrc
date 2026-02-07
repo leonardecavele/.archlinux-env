@@ -1,11 +1,6 @@
 # only for interactive shells
-case "$-" in
-  *i*) ;;
-  *) return ;;
-esac
-
 HOST_HOME="$HOME"
-JUNEST_BIN_DIR="$HOST_HOME/.local/share/junest/bin"
+JUNEST_BIN_DIR="$HOST_HOME/config/junest/bin"
 JUNEST_WRAPPERS="$HOST_HOME/.junest/usr/bin_wrappers"
 
 # make junest discoverable early (without changing priority too much)

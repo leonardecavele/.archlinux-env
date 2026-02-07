@@ -9,11 +9,22 @@ export JUNEST_REPOSITORY="$SCRIPT_DIRECTORY/junest"
 export JUNEST="${JUNEST:-$JUNEST_REPOSITORY/bin/junest}"
 export user="leona"
 
-# get logger
+# get logger and utils
 source "$SCRIPT_DIRECTORY/scripts/log.sh"
+source "$SCRIPT_DIRECTORY/scripts/utils.sh"
+
+# arguments
+if [ "${1-}" = "-d" ] || [ "${1-}" = "-ds" ]; then
+  if in_junest; then
+    log_error "please type 'exit' to quit junest first"
+	exit 1
+  fi
+  rm -rf -- "$JUNEST_REPOSITORY" "$HOME/.junest"
+  [ "${1-}" = "-ds" ] && exit 0
+fi
 
 # if user have sudo and pacman
-if /usr/bin/sudo -n true >/dev/null 2>&1 && command -v pacman >/dev/null 2>&1; then
+if sudo_pacman_available; then
   log_info "sudo + pacman available: installing on home"
   bash "$SCRIPT_DIRECTORY/scripts/config.sh"
 else
@@ -22,5 +33,11 @@ else
   bash "$SCRIPT_DIRECTORY/scripts/config.sh"
 fi
 
+log_info "if needed, run '$0' again to update pacman packages"
 log_info "reloading shell"
-exec bash -l
+
+if in_junest; then
+  source $HOME/.bashrc
+else
+  exec bash -l
+fi

@@ -121,8 +121,8 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 
 if [[ -z "${MACHINE_ALREADY_SHOWN:-}" ]]; then
-  export MACHINE_ALREADY_SHOWN=1
   macchina --config ~/.config/macchina/macchina.toml
+  export MACHINE_ALREADY_SHOWN=1
 fi
 
 cd ~/

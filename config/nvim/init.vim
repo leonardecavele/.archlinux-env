@@ -30,6 +30,9 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'xiyaowong/transparent.nvim'
 Plug 'rachartier/tiny-glimmer.nvim'
 
+" game
+Plug 'eandrju/cellular-automaton.nvim'
+
 " temp files in linux home
 set directory^=$HOME/.vim/swap//
 set backupdir^=$HOME/.vim/backup//

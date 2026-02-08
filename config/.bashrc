@@ -11,7 +11,7 @@ fi
 
 # enter junest if not in junest
 if ! in_arch && junest_installed; then
-  exec "$JUNEST" -n /usr/bin/bash -i
+  exec "$JUNEST" -b "--bind /mnt /mnt" -n /usr/bin/bash -i
 fi
 
 # aliases

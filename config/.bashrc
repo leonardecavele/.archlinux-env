@@ -1,4 +1,5 @@
 # variables
+EXIT_JUNEST=0
 export JUNEST=/home/leona/.archlinux-env/junest/bin/junest
 export JUNEST_REPOSITORY=/home/leona/.archlinux-env/junest
 export SCRIPT_DIRECTORY=/home/leona/.archlinux-env
@@ -29,7 +30,7 @@ alias func='grep -rE "[a-z_]+\([a-z_0-9,\* ]*\)"'
 # prompt
 shopt -s checkwinsize
 
-PS1="${GREEN}\u@\h ${BLUE}\W${MAGENTA} \$(git_branch)\n${RESET}\$ "
+PS1="${PROMPT_GREEN}\u@\h ${PROMPT_BLUE}\W${PROMPT_MAGENTA} \$(git_branch)\n${PROMPT_RESET}\$ "
 
 # macchina
 TMP_DIRECTORY="${XDG_RUNTIME_DIR:-/tmp}"

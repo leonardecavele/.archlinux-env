@@ -1,5 +1,4 @@
 # variables
-EXIT_JUNEST=0
 export JUNEST=/home/leona/.archlinux-env/junest/bin/junest
 export JUNEST_REPOSITORY=/home/leona/.archlinux-env/junest
 export SCRIPT_DIRECTORY=/home/leona/.archlinux-env
@@ -37,7 +36,7 @@ TMP_DIRECTORY="${XDG_RUNTIME_DIR:-/tmp}"
 MACCHINA_SHOWN="$TMP_DIRECTORY/macchina.$$"
 if in_arch && [ ! -e "$MACCHINA_SHOWN" ]; then
   : > "$MACCHINA_SHOWN"
-  command -v macchina >/dev/null 2>&1 && macchina --config ~/.config/macchina/macchina.toml
+  macchina --config ~/.config/macchina/macchina.toml
 fi
 
 # go to home

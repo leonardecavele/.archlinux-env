@@ -1,57 +1,23 @@
-# Specifies the network interface to use for the LocalIP readout
-#interface = "wlan0"
+long_uptime = true
+physical_cores = true
 
-# Lengthen uptime output
-#long_uptime = true
+show = [
+  "Host",
+  "Machine",
+  "Kernel",
+  "Distribution",
+  "OperatingSystem",
+  "Packages",
+  "Shell",
+  "Terminal",
+  "Uptime",
+  "Memory",
+  "GPU",
+  "Processor",
+  "ProcessorLoad",
+  "DiskSpace"
+]
 
-# Lengthen shell output
-#long_shell = false
+disks = ["/home/"]
 
-# Lengthen kernel output
-long_kernel = true
-
-# Toggle between displaying the current shell or your user's default one.
-current_shell = true
-
-# Toggle between displaying the number of physical or logical cores of your
-# processor.
-physical_cores = false
-
-# Disks to show disk usage for. Defaults to `["/"]`.
-disks = ["/home/ldecavel"]
-
-# Show percentage next to disk information
-#disk_space_percentage = false
-
-# Show percentage next to memory information
-#memory_percentage = false
-
-# Themes need to be placed in "$XDG_CONFIG_DIR/macchina/themes" beforehand.
-theme = "theme"
-show = ["Host", "Machine", "Kernel", "Distribution",  "Processor","ProcessorLoad", "Memory", "DiskSpace", "Terminal", "Shell"]
-
-
-# Displays only the specified readouts.
-# Accepted values (case-sensitive):
-#   - Host
-#   - Machine
-#   - Kernel
-#   - Distribution
-#   - OperatingSystem
-#   - DesktopEnvironment
-#   - WindowManager
-#   - Resolution
-#   - Backlight
-#   - Packages
-#   - LocalIP
-#   - Terminal
-#   - Shell
-#   - Uptime
-#   - Processor
-#   - ProcessorLoad
-#   - Memory
-#   - Battery
-#   - GPU
-#   - DiskSpace
-# Example:
-#   show = ["Battery", "Memory", ...]
+theme = "monkey"

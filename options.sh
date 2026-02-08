@@ -5,14 +5,25 @@ user="leona"
 pkgs=(
   neovim
   less
+  flake8
+  mypy
   base-devel
   man-pages
+  libxcb
+  xcb-util-keysyms
+  vulkan-icd-loader
+  libbsd
+  vulkan-tools
+  pciutils
+  mesa
   macchina
+  vulkan-swrast
   which
   tree
   tree-sitter-cli
   openssh
   nodejs
+  python-pip
   npm
   curl
   git

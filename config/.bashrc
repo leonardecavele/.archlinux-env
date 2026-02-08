@@ -26,6 +26,24 @@ alias vim='nvim'
 alias p='python3'
 alias func='grep -rE "[a-z_]+\([a-z_0-9,\* ]*\)"'
 
+# clean old cat
+unalias cat 2>/dev/null
+unset -f cat 2>/dev/null
+
+# cat -> pygmentize on each file argument
+cat() {
+  if [ "$#" -eq 0 ]; then
+    command cat
+    return
+  fi
+
+  local f
+  for f in "$@"; do
+	printf '%b%b|%s|%b\n' "$RESET" "$CYAN" "$f" "$RESET"
+    pygmentize -g "$f"
+  done
+}
+
 # prompt
 shopt -s checkwinsize
 

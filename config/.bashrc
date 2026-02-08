@@ -1,7 +1,4 @@
 # variables
-export JUNEST=/home/leona/.archlinux-env/junest/bin/junest
-export JUNEST_REPOSITORY=/home/leona/.archlinux-env/junest
-export SCRIPT_DIRECTORY=/home/leona/.archlinux-env
 
 # get logger and utils
 source "$SCRIPT_DIRECTORY/srcs/helper.sh"

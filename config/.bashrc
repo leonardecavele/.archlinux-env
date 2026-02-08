@@ -16,7 +16,7 @@ if ! in_arch && junest_installed; then
 fi
 
 # aliases
-alias jun='$SCRIPT_DIRECTORY/main.sh'
+alias al-env='$SCRIPT_DIRECTORY/main.sh'
 alias options='vim $SCRIPT_DIRECTORY/options.sh'
 alias ra='rm a.out'
 alias c='cc -Wall -Wextra -Werror'
@@ -57,7 +57,13 @@ if in_arch && [ ! -e "$MACCHINA_SHOWN" ]; then
   macchina --config ~/.config/macchina/macchina.toml
 fi
 
-# auto-tmux (interactive only)
-if [ -z "${TMUX:-}" ] && [ -z "${SSH_TTY:-}" ]; then
-  exec tmux new-session -A -s main
+# auto-tmux (only if real terminal)
+if [[ $- == *i* ]] \
+  && [ -t 0 ] && [ -t 1 ] \
+  && command -v tmux >/dev/null 2>&1 \
+  && [ "${TERM:-}" != "" ] && [ "${TERM:-}" != "dumb" ]; then
+  tty_nr="$(awk '{print $7}' /proc/$$/stat 2>/dev/null)"
+  if [ -n "$tty_nr" ] && [ "$tty_nr" -ne 0 ] && [ -z "${TMUX:-}" ]; then
+    exec tmux new-session -A -s main
+  fi
 fi

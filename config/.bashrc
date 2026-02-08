@@ -1,9 +1,10 @@
 # variables
 
-# get logger and utils
+# get helper and options
 source "$SCRIPT_DIRECTORY/srcs/helper.sh"
+source "$SCRIPT_DIRECTORY/options.sh"
 
-# delete reloaded terminal that asked for it
+# delete reloaded terminal if asked
 if [ "${EXIT_JUNEST:-1}" -eq 0 ]; then
   "$SCRIPT_DIRECTORY/main.sh" -r
   unset EXIT_JUNEST
@@ -11,7 +12,7 @@ fi
 
 # enter junest if not in junest
 if ! in_arch && junest_installed; then
-  exec "$JUNEST" -b "--bind /mnt /mnt" -n /usr/bin/bash -i
+  exec "$JUNEST" -b "${bind[@]}" -n /usr/bin/bash -i
 fi
 
 # aliases

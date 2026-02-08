@@ -36,3 +36,8 @@ pkgs=(
 npms=(
   pyright
 )
+
+# binded directories
+bind=(
+  "--bind /mnt /mnt"
+)

@@ -4,6 +4,7 @@ user="leona"
 # pacman package list
 pkgs=(
   neovim
+  tmux
   less
   flake8
   mypy

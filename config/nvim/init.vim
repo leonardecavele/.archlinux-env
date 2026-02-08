@@ -38,14 +38,37 @@ set undofile
 
 call plug#end()
 
+filetype plugin indent on
 syntax on
 set belloff=all
 set number
 set colorcolumn=80
+set hidden
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
+set noexpandtab
 set smartindent
+set smarttab 
 set autoindent
+
+"disable arrows (normal)
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+
+"disable arrows (insert)
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+
+"disable arrows (visual)
+vnoremap <Up> <Nop>
+vnoremap <Down> <Nop>
+vnoremap <Left> <Nop>
+vnoremap <Right> <Nop>
 
 " appearance
 set termguicolors

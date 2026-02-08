@@ -1,7 +1,12 @@
+# ansi misc
+BOLD=$'\033[1m'
+
 # colours
 RED=$'\e[0;31m'
 YELLOW=$'\e[0;33m'
 RESET=$'\e[0m'
+BLUE=$'\e[0;34m'
+CYAN=$'\e[0;35m'
 
 # prompt colours
 PROMPT_RESET='\[\e[0m\]'

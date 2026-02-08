@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-
-# detect mode to set RUNner
+# detect mode and set appropriate runner
 if in_arch && junest_installed; then
   MODE="DIRECT"
   RUN=()
@@ -13,6 +11,7 @@ else
   RUN=("$JUNEST" -n)
 fi
 
+# handle arguments
 if [ "${1-}" != "-i" ] && [ "${1-}" != "-u" ] ; then
   log_error "invalid argument. usage:"
   log_error "./config.sh -i [INSTALL] | -u [UNINSTALL]"
@@ -20,6 +19,7 @@ if [ "${1-}" != "-i" ] && [ "${1-}" != "-u" ] ; then
 fi
 
 if [ "${1-}" = "-i" ] ; then
+  # install
   log_info "[${MODE}] updating or installing pacman packages"
   "${RUN[@]}" sudo pacman -Syu --noconfirm
   "${RUN[@]}" sudo pacman -S --noconfirm --needed "${pkgs[@]}"
@@ -31,6 +31,7 @@ if [ "${1-}" = "-i" ] ; then
   fi
   log_info "[${MODE}] done updating or installing npm packages"
 else
+  # uninstall
   log_info "[${MODE}] uninstalling npm packages"
   if ! "${RUN[@]}" npm uninstall -g "${npms[@]}"; then
     "${RUN[@]}" sudo npm uninstall -g "${npms[@]}"

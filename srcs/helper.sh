@@ -1,7 +1,9 @@
+# colours
 RED=$'\e[0;31m'
 YELLOW=$'\e[0;33m'
 RESET=$'\e[0m'
 
+# prompt colours
 PROMPT_RESET='\[\e[0m\]'
 PROMPT_BLUE='\[\033[01;34m\]'
 PROMPT_GREEN='\[\033[01;32m\]'

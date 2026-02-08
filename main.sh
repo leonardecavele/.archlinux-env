@@ -8,7 +8,7 @@ export SCRIPT_DIRECTORY="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 export JUNEST_REPOSITORY="$SCRIPT_DIRECTORY/junest"
 export JUNEST="${JUNEST:-$JUNEST_REPOSITORY/bin/junest}"
 
-# get logger and utils
+# get helper and user options 
 source "$SCRIPT_DIRECTORY/srcs/helper.sh"
 source "$SCRIPT_DIRECTORY/options.sh"
 
@@ -42,7 +42,7 @@ fi
 
 export_in_bashrc "SCRIPT_DIRECTORY" "$SCRIPT_DIRECTORY"
 
-# install depending on environment
+# install
 if sudo_pacman_available; then
   log_info "sudo + pacman available: installing on home"
   source "$SCRIPT_DIRECTORY/srcs/packages.sh" -i
@@ -62,7 +62,7 @@ for dir in "$SCRIPT_DIRECTORY/config"/*/; do
 done
 ln -svf "$SCRIPT_DIRECTORY/config/.bashrc" "$HOME/.bashrc" || true
 
-# vim-plug to home
+# vim-plug
 log_info "[${MODE}] installing vim plug"
 data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
 plug_path="$data_home/nvim/site/autoload/plug.vim"

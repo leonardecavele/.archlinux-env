@@ -1,3 +1,4 @@
+# username
 user="leona"
 
 # pacman package list

@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # clone junest repository
 if ! junest_installed; then
   git clone https://github.com/leonardecavele/junest.git "$JUNEST_REPOSITORY"

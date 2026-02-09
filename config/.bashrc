@@ -8,11 +8,13 @@ source "$SCRIPT_DIRECTORY/options.sh"
 if [ "${EXIT_JUNEST:-1}" -eq 0 ]; then
   "$SCRIPT_DIRECTORY/main.sh" -r
   unset EXIT_JUNEST
+  return 0 2>/dev/null || true
 fi
 
 # enter junest if not in junest
 if ! in_arch && junest_installed; then
   exec "$JUNEST" -b "${bind[@]}" -n /usr/bin/bash -i
+  return 0 2>/dev/null || true
 fi
 
 # aliases
@@ -49,21 +51,16 @@ shopt -s checkwinsize
 
 PS1="[\$?] ${PROMPT_GREEN}\u@\h ${PROMPT_BLUE}\W${PROMPT_MAGENTA} \$(git_branch)\n${PROMPT_RESET}\$ "
 
+# auto-tmux (only if real terminal)
+if ! in_tmux && in_arch; then
+  tmux has-session -t main 2>/dev/null && tmux kill-session -t main
+  exec tmux new-session -s main
+fi
+
 # macchina
 TMP_DIRECTORY="${XDG_RUNTIME_DIR:-/tmp}"
 MACCHINA_SHOWN="$TMP_DIRECTORY/macchina.$$"
 if in_arch && [ ! -e "$MACCHINA_SHOWN" ]; then
   : > "$MACCHINA_SHOWN"
   macchina --config ~/.config/macchina/macchina.toml
-fi
-
-# auto-tmux (only if real terminal)
-if [[ $- == *i* ]] \
-  && [ -t 0 ] && [ -t 1 ] \
-  && command -v tmux >/dev/null 2>&1 \
-  && [ "${TERM:-}" != "" ] && [ "${TERM:-}" != "dumb" ]; then
-  tty_nr="$(awk '{print $7}' /proc/$$/stat 2>/dev/null)"
-  if [ -n "$tty_nr" ] && [ "$tty_nr" -ne 0 ] && [ -z "${TMUX:-}" ]; then
-    exec tmux new-session -A -s main
-  fi
 fi

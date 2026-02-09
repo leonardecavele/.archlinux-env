@@ -25,7 +25,7 @@ Examples:
 
 ### STRUCTURE
 The ``options.sh`` file is meant to be modified if you want to customize your install. You might broke the scvript
-if you edit any other file.
+if you edit any other file. You might want to edit ``.gitconfig`` as well.
 ```
 .
 ├── config              # User directories installed into ~/.config and dotfiles into ~/
@@ -33,6 +33,7 @@ if you edit any other file.
 │   └── nvim
 │   └── .bashrc
 │   └── .tmux.conf
+│   └── .gitconfig
 ├── junest              # JuNest sources (installed automatically if needed)
 ├── main.sh             # Entry point
 ├── options.sh          # User options

@@ -72,7 +72,7 @@ log_info "[${MODE}] installing vim plug"
 data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
 plug_path="$data_home/nvim/site/autoload/plug.vim"
 if [ ! -f "$plug_path" ]; then
-  curl -sfLo "$plug_path" --create-rirs \
+  curl -sfLo "$plug_path" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim >/dev/null
 fi
 log_info "[${MODE}] done installing vim plug: open neovim and run ':PlugInstall'"

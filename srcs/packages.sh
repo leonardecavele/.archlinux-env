@@ -32,6 +32,8 @@ if [ "${1-}" = "-i" ] ; then
   if [ "${#missing_npms[@]}" -eq 0 ]; then
     echo " there is nothing to do"
   else
+	mkdir -p ~/.npm-global
+	npm config set prefix "$HOME/.npm-global"
     if ! "${RUN[@]}" npm i -g --no-fund --no-audit "${missing_npms[@]}"; then
       "${RUN[@]}" sudo npm i -g --no-fund --no-audit "${missing_npms[@]}"
     fi
@@ -40,6 +42,7 @@ if [ "${1-}" = "-i" ] ; then
 else
   # uninstall
   log_info "[${MODE}] uninstalling npm packages"
+  npm config set prefix "$HOME/.npm-global"
   if ! "${RUN[@]}" npm uninstall -g "${npms[@]}"; then
     "${RUN[@]}" sudo npm uninstall -g "${npms[@]}"
   fi

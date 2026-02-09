@@ -57,7 +57,7 @@ if you edit any other file. You might want to edit ``.gitconfig`` as well.
 - `C-f`  Open preview window of the definition
 - `A-f`  Close all opened preview windows
 
-#### tmux
+#### Tmux
 
 - `C-Space h`  Move to left pane  
 - `C-Space j`  Move to bottom pane  

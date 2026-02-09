@@ -28,9 +28,11 @@ The ``options.sh`` file is meant to be modified if you want to customize your in
 if you edit any other file.
 ```
 .
-├── config              # User configuration installed into ~/.config
+├── config              # User directories installed into ~/.config and dotfiles into ~/
 │   ├── macchina
 │   └── nvim
+│   └── .bashrc
+│   └── .tmux.conf
 ├── junest              # JuNest sources (installed automatically if needed)
 ├── main.sh             # Entry point
 ├── options.sh          # User options

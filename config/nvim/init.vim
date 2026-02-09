@@ -54,6 +54,7 @@ set noexpandtab
 set smartindent
 set smarttab 
 set autoindent
+set mouse=
 
 "disable arrows (normal)
 nnoremap <Up> <Nop>

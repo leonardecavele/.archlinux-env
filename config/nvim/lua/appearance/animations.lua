@@ -5,7 +5,7 @@ if tiny_glimmer_ok then
         animations = {
             fade = {
                 from_color = "#f0e056",
-                to_color = "#00e05f",
+                to_color = "#f0e05f",
             },
         },
         overwrite = {

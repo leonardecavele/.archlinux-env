@@ -33,7 +33,7 @@ if [ "${1-}" = "-i" ] ; then
     echo " there is nothing to do"
   else
 	mkdir -p ~/.npm-global
-	npm config set prefix "$npm_directory"
+	"${RUN[@]}" npm config set prefix "$npm_directory"
     if ! "${RUN[@]}" npm i -g --no-fund --no-audit "${missing_npms[@]}"; then
       "${RUN[@]}" sudo npm i -g --no-fund --no-audit "${missing_npms[@]}"
     fi

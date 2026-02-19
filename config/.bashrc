@@ -1,4 +1,14 @@
 # variables
+export JUNEST=/home/leona/.archlinux-env/junest/bin/junest
+export JUNEST_REPOSITORY=/home/leona/.user-env/junest
+export SCRIPT_DIRECTORY=/home/leona/.user-env
+
+# stop if not interactive
+case $- in
+  *i*) ;;
+  *) return ;;
+esac
+[ -t 0 ] || return
 
 # WSLg: Wayland socket location
 if [ -S /mnt/wslg/runtime-dir/wayland-0 ]; then

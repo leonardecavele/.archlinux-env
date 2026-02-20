@@ -44,20 +44,15 @@ log_error()  {
   printf '%b[%s]: (error)%b %s\n' "$RED" "$1" "$RESET" "$2";
 }
 
-usage() { # to do
+usage() {
   cat <<'EOF'
-Usage: main.sh [OPTION]
+Usage: install_config.sh [OPTION]
 
 Options:
-  -s    Set up JuNest (if needed) and install/update packages
-  -u    Uninstall downloaded packages
-  -r    Remove JuNest and its packages
-  -h    Show this help and exit
-
-Examples:
-  main.sh -s
-  main.sh -u
-  main.sh -r
+  -i    Install packages and JuNest if needed
+  -u    Update download packages
+  -d    Delete packages and JuNest if installed
+  -h    Show this help
 EOF
 }
 

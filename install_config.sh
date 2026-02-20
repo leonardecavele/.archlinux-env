@@ -21,7 +21,7 @@ if [ "${1-}" = "-r" ]; then
   log_info "$0" "deleting config"
 
   # delete packages
-  source "$SCRIPT_DIRECTORY/srcs/install_packages.sh" -d
+  source "$SCRIPT_DIRECTORY/srcs/packages/delete_packages.sh"
 
   # deleting .config directories
   for dir in "$SCRIPT_DIRECTORY/config"/*/; do
@@ -48,7 +48,7 @@ if [ "${1-}" = "-u" ]; then
 	
 	log_info "$0" "updating packages"
 
-	source "$SCRIPT_DIRECTORY/srcs/install_packages.sh" -u
+	source "$SCRIPT_DIRECTORY/srcs/packages/update_packages.sh" -u
 
 	log_info "$0" "packages successfully updated"
 fi
@@ -57,14 +57,14 @@ fi
 if is_sudo && (is_pacman || is_dnf || is_apt); then
   log_info "$0" "installing packages on home"
 
-  source "$SCRIPT_DIRECTORY/srcs/install_packages.sh" -i
+  source "$SCRIPT_DIRECTORY/srcs/packages/install_packages.sh"
 
   log_info "$0" "packages successfully installed"
 else
   log_info "$0" "installing packages on junest"
 
   source "$SCRIPT_DIRECTORY/srcs/install_junest.sh"
-  source "$SCRIPT_DIRECTORY/srcs/install_packages.sh" -i
+  source "$SCRIPT_DIRECTORY/srcs/packages/install_packages.sh"
 
   export JUNEST_REPOSITORY="$SCRIPT_DIRECTORY/junest"
   export_in_bashrc "JUNEST_REPOSITORY" "$JUNEST_REPOSITORY"

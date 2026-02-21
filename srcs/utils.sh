@@ -32,10 +32,6 @@ is_cargo() {
   "$@" command -v cargo >/dev/null 2>&1
 }
 
-has_junest_repository() {
-  [ -d "$JUNEST_REPOSITORY" ]
-}
-
 export_in_bashrc() {
   [ -n "${1-}" ] && [ -n "${2-}" ] || return 1
 

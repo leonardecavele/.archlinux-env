@@ -46,11 +46,15 @@ clean_bashrc_exports() {
 }
 
 log_info() {
-  printf '%b[%s]: (info)%b %s\n' "$YELLOW" "${1-}" "$RESET" "${2-}";
+  local name="${1-}"
+  name="${name##*/}"
+  printf '%b[%s]: (info)%b %s\n' "$YELLOW" "$name" "$RESET" "${2-}"
 }
 
-log_error()  {
-  printf '%b[%s]: (error)%b %s\n' "$RED" "${1-}" "$RESET" "${2-}";
+log_error() {
+  local name="${1-}"
+  name="${name##*/}"
+  printf '%b[%s]: (error)%b %s\n' "$RED" "$name" "$RESET" "${2-}"
 }
 
 usage() {

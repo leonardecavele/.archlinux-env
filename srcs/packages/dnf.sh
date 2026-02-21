@@ -27,7 +27,7 @@ elif [ "${1-}" = "-d" ] ; then
 
   if [ ! -f "$SNAP_BASE" ]; then
     log_error "$0" "snapshots missing: $SNAP_BASE"
-    exit 1
+    return
   fi
 
   dnf repoquery --userinstalled | sort -u > "$SNAP_CUR"

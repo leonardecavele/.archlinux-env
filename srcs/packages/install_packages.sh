@@ -27,9 +27,9 @@ done
 if [ "${#missing_npms[@]}" -eq 0 ]; then
   echo "nothing to do"
 else
-  mkdir -p ~/.npm-global
+  mkdir -p "$npm_directory"
   "${RUN[@]}" npm config set prefix "$npm_directory"
-  "${RUN[@]}" npm i -g --no-fund --no-audit "${missing_npms[@]}"
+  "${RUN[@]}" npm i -g --prefix "$npm_directory" --no-fund --no-audit "${missing_npms[@]}"
 fi
 
 log_info "$0" "successfully installed npm packages"
@@ -73,7 +73,10 @@ if [ ! -f "$plug_path" ]; then
   curl -sfLo "$plug_path" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim >/dev/null
 fi
-"$HOME/.local/bin/nvim" --headless +'PlugInstall --sync' +qa >/dev/null 2>&1
-"$HOME/.local/bin/nvim" --headless +'PlugUpdate --sync' +qa >/dev/null 2>&1
+"$HOME/.local/bin/nvim" --headless +'PlugInstall --sync' +qa \
+  || { log_error "$0" "PlugInstall failed"; return; }
+"$HOME/.local/bin/nvim" --headless +'PlugUpdate --sync' +qa \
+  || { log_error "$0" "PlugUpdate failed"; return; }
+echo
 
 log_info "$0" "vim plug succesfully installed"

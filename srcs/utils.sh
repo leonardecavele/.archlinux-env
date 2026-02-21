@@ -42,7 +42,7 @@ export_in_bashrc() {
 }
 
 clean_bashrc_exports() {
-  perl -0777 -i -pe 's/^# exports[ \t]*\R.*?(?=^#)/# exports\n\n/sm' "$HOME/.bashrc"
+  perl -0777 -i -pe 's/^# exports[ \t]*\R.*?(?=^#)/# exports\n\n/sm' "$SCRIPT_DIRECTORY/config/.bashrc"
 }
 
 log_info() {
@@ -77,8 +77,7 @@ git_branch() {
 }
 
 in_tmux() {
-  [ -n "${TMUX:-}" ] || [ "${TERM:-}" = "screen" ] || [ "${TERM:-}" = "screen-256color" ] \
-    || [ "${TERM:-}" = "tmux" ] || [ "${TERM:-}" = "tmux-256color" ]
+  [ -z "$TMUX" ]
 }
 
 can_delete_apt() {

@@ -41,3 +41,4 @@ fi
 # update vim plug-ins
 "$HOME/.local/bin/nvim" --headless +'PlugInstall --sync' +qa >/dev/null 2>&1
 "$HOME/.local/bin/nvim" --headless +'PlugUpdate --sync' +qa >/dev/null 2>&1
+echo

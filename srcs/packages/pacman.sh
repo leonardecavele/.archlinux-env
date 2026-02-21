@@ -37,7 +37,7 @@ elif [ "${1-}" = "-d" ] && ! is_junest ; then
 
   if [ ! -f "$SNAP_BASE" ]; then
     log_error "$0" "snapshots missing: $SNAP_BASE"
-    exit 1
+    return
   fi
 
   "${RUN[@]}" pacman -Qqe | sort -u > "$SNAP_CUR"

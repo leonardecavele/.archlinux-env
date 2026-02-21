@@ -8,12 +8,12 @@ fi
 # check if junest is installed
 if [ -d "$HOME/.junest" ] ; then
   log_info "$0" "junest already installed"
-  return 0
+  return
 fi
 
 if ! can_install_junest; then
   log_error "$0" "can't install junest"
-  return 1
+  return
 fi
 
 # install junest

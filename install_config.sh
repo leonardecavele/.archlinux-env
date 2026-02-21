@@ -24,7 +24,7 @@ fi
 # check arguments validity
 if [[ "${1-}" == "-h" || ( "${1-}" != "-i" && "${1-}" != "-u" && "${1-}" != "-d" ) ]]; then
   usage
-  return 1
+  return
 fi
 
 # delete
@@ -75,6 +75,19 @@ if [ "${1-}" = "-u" ]; then
 	reload_shell
 fi
 
+# link .config directories
+mkdir -p "$HOME/.config"
+for dir in "$SCRIPT_DIRECTORY/config"/*/; do
+  [ -r "$dir" ] || continue
+  ln -svf "$dir" "$HOME/.config/" || true
+done
+
+# link dotfiles
+for path in "$SCRIPT_DIRECTORY/config"/.[!.]* "$SCRIPT_DIRECTORY/config"/..?*; do
+  [ -e "$path" ] || continue
+  ln -svf "$path" "$HOME/" || true
+done
+
 # install
 if is_sudo && (is_pacman || is_dnf || is_apt); then
   log_info "$0" "installing packages on home"
@@ -88,24 +101,11 @@ else
   source "$SCRIPT_DIRECTORY/srcs/install_junest.sh"
   if [ "$?" -eq 1 ]; then
     log_error "$0" "cannot install config"
-	return 1
+    return
   fi
   source "$SCRIPT_DIRECTORY/srcs/packages/install_packages.sh"
 
   log_info "$0" "packages successfully installed on junest"
 fi
-
-# link .config directories
-mkdir -p "$HOME/.config"
-for dir in "$SCRIPT_DIRECTORY/config"/*/; do
-  [ -r "$dir" ] || continue
-  ln -svf "$dir" "$HOME/.config/" || true
-done
-
-# link dotfiles
-for path in "$SCRIPT_DIRECTORY/config"/.[!.]* "$SCRIPT_DIRECTORY/config"/..?*; do
-  [ -e "$path" ] || continue
-  ln -svf "$path" "$HOME/" || true
-done
 
 reload_shell

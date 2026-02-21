@@ -11,6 +11,11 @@ if [ -d "$HOME/.junest" ] ; then
   return 0
 fi
 
+if ! can_install_junest; then
+  log_error "$0" "can't install junest"
+  return 1
+fi
+
 # install junest
 log_info "$0" "installing junest"
 "$JUNEST" setup

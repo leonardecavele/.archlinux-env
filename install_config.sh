@@ -86,6 +86,10 @@ else
   log_info "$0" "installing packages on junest"
 
   source "$SCRIPT_DIRECTORY/srcs/install_junest.sh"
+  if [ "$?" -eq 1 ]; then
+    log_error "$0" "cannot install config"
+	return 1
+  fi
   source "$SCRIPT_DIRECTORY/srcs/packages/install_packages.sh"
 
   log_info "$0" "packages successfully installed on junest"

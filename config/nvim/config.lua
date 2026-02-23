@@ -6,6 +6,7 @@ require('keymaps')
 
 -- Navigation
 require('navigation.telescope')
+require('navigation.lastplace')
 
 -- Code
 require('code.package-manager')

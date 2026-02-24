@@ -20,6 +20,7 @@ common_pkgs=(
 
 # pacman package list
 pacman_pkgs=(
+  fuse2
   flake8
   mypy
   openssh
@@ -32,7 +33,6 @@ pacman_pkgs=(
   mesa
   rust
   vulkan-swrast
-  tree-sitter-cli
   python-pip
   pygmentize
   pyright
@@ -54,7 +54,6 @@ dnf_pkgs=(
   rustc
   mesa-dri-drivers
   vulkan-swrast
-  tree-sitter
   python3-pip
   python3-pygments
 )
@@ -72,7 +71,6 @@ apt_pkgs=(
   libvulkan1
   libbsd0
   mesa-utils
-  tree-sitter-cli
   openssh-client
   python3-pip
   python3-pygments
@@ -86,6 +84,7 @@ apt_pkgs+=("${common_pkgs[@]}")
 # npm package list
 npm_pkgs=(
   pyright
+  tree-sitter-cli
 )
 
 npm_directory=$HOME/.npm-global

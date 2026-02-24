@@ -1,18 +1,5 @@
 # exports
 
-# stop if not interactive
-case $- in
-  *i*) ;;
-  *) return ;;
-esac
-[ -t 0 ] || return
-
-# get helpers and options
-source "$SCRIPT_DIRECTORY/packages.sh"
-source "$SCRIPT_DIRECTORY/srcs/utils.sh"
-source "$SCRIPT_DIRECTORY/srcs/user_commands.sh"
-source "$SCRIPT_DIRECTORY/srcs/colors.sh"
-
 # junest
 if is_junest; then
   export PATH="$PATH:$SCRIPT_DIRECTORY/junest/bin"
@@ -25,6 +12,22 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 # nvim
 export PATH="$PATH:$HOME/.local/bin"
+
+# npm
+export PATH="$PATH:$HOME/.npm-global/bin"
+
+# stop if not interactive
+case $- in
+  *i*) ;;
+  *) return ;;
+esac
+[ -t 0 ] || return
+
+# get helpers and options
+source "$SCRIPT_DIRECTORY/packages.sh"
+source "$SCRIPT_DIRECTORY/srcs/utils.sh"
+source "$SCRIPT_DIRECTORY/srcs/user_commands.sh"
+source "$SCRIPT_DIRECTORY/srcs/colors.sh"
 
 # aliases
 alias ue='source $SCRIPT_DIRECTORY/install_config.sh'

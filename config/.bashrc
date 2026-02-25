@@ -47,9 +47,9 @@ shopt -s checkwinsize
 PS1="[\$?] ${PROMPT_GREEN}\u@\h ${PROMPT_BLUE}\W${PROMPT_MAGENTA} \$(git_branch)\n${PROMPT_RESET}\$ "
 
 # tmux
-#if ! in_tmux; then
-#  exec tmux new-session -A -s main
-#fi
+if ! in_tmux; then
+  exec tmux new-session -A -s main
+fi
 
 # macchina
 macchina --config ~/.config/macchina/macchina.toml
